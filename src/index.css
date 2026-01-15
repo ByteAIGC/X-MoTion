@@ -4389,7 +4389,7 @@ html {
 .video-masonry-item {
   background: #111;
   border-radius: 0px;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   display: inline-block;
   width: 100%;
@@ -4403,6 +4403,12 @@ html {
   height: auto;
   display: block;
   object-fit: contain;
+}
+
+/* Ensure video comparison container fits within masonry item */
+.video-masonry-item .video-comparison-container {
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 1400px) {
@@ -4421,6 +4427,110 @@ html {
   .video-masonry {
     column-count: 1;
   }
+}
+
+/* Video Comparison Component - Hover to Expand Original */
+.video-comparison-container {
+  position: relative;
+  width: 100%;
+  background: #111;
+  border-radius: 0px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* When hovering, increase z-index to show overlay above other items */
+.video-masonry-item:hover {
+  z-index: 100;
+  position: relative;
+}
+
+/* Edited video stays in normal flow - maintains container dimensions */
+.video-comparison-container .video-main {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.video-comparison-container .video-main video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Original video overlay - small by default */
+.video-original-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: auto;
+  background: #000;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0 0 6px 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+.video-original-overlay video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.video-original-overlay .video-label {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 11;
+}
+
+/* Expanded state: expand original video to 60% size, centered */
+.video-original-overlay.expanded {
+  width: 60%;
+  max-width: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85);
+}
+
+/* Hidden state: hide visually but keep playing */
+.video-original-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Add backdrop when expanded */
+.video-comparison-container:has(.video-original-overlay.expanded)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* Make container clickable */
+.video-comparison-container {
+  cursor: pointer;
 }
 
 .video-grid-large {

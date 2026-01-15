@@ -5,12 +5,19 @@ import { FileText, Github, Play, ExternalLink, ChevronLeft, ChevronRight } from 
 import { useRef, useState, useEffect } from 'react';
 import GSBChart_Kling from './components/GSBChart_Kling';
 import GSBChart_Runway from './components/GSBChart_Runway';
+import { VideoComparison } from './components/VideoComparison';
 
 export default function App() {
   const highResScrollRef = useRef<HTMLDivElement>(null);
   const diverseScrollRef = useRef<HTMLDivElement>(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const base = import.meta.env.BASE_URL;
+
+  // Helper function to get original video path from edited video filename
+  const getOriginalVideoPath = (editedPath: string): string | undefined => {
+    const filename = editedPath.split('/').pop() || '';
+    return `assets_x/motion_driving/${filename}`;
+  };
 
   // Diverse Generation videos
   const diverseVideos = [
@@ -196,189 +203,256 @@ export default function App() {
           </h3>
           <p className="section-description text-left">
           X-MoTion generates high-quality motion transfer and editing that support multi-form spatio-temporal semantic transfer, while preserving the identity characteristics.
+          <br />
+          <span style={{ fontSize: '0.9em', opacity: 0.8 }}>(Click the video to expand, shrink, or hide the original video overlay)</span>
           </p>
         </div>
         
         <div className="video-masonry">
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/0_sora66_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/0_sora66_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/0_sora66_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline preload="auto" crossOrigin="anonymous">
-              <source src={encodeURI(`${base}assets_x/motion/16_None_  &&  .mp4`)} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/16_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/16_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/1_sora26_None_  && 在这段充满 (1).mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/1_sora26_None_  && 在这段充满 (1).mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/1_sora26_None_  && 在这段充满 (1).mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/1_sora67_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/1_sora67_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/1_sora67_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/2_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/2_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/2_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/3_11_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/3_11_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/3_11_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/3_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/3_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/3_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/4_12_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/4_12_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/4_12_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/4_sora59_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/4_sora59_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/4_sora59_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/4_sora68_None_  &&   (1).mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/4_sora68_None_  &&   (1).mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/4_sora68_None_  &&   (1).mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline crossOrigin="anonymous">
-              <source src={`${base}assets_x/motion/5_sora14_None_  && 门铃摄像头.mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/5_sora14_None_  && 门铃摄像头.mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/5_sora14_None_  && 门铃摄像头.mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/7_15_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/7_15_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/7_15_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/10_18_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/11_19_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/11_19_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/11_19_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/12_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/12_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/12_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/14_21_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/14_21_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline preload="auto" crossOrigin="anonymous">
-              <source src={encodeURI(`${base}assets_x/motion/14_21_None_  &&  .mp4`)} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/14_sora29_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/14_sora29_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/14_sora29_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/15_sora24_None_  && 从一个人的.mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/15_sora24_None_  && 从一个人的.mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/15_sora24_None_  && 从一个人的.mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/0_sora69_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/0_sora69_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/0_sora69_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/17_24_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/17_24_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/17_24_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/19_26_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/19_26_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/19_26_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/21_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/21_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/21_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/21_sora30_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/21_sora30_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/21_sora30_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/26_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/26_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/26_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/27_8_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/27_8_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/27_8_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/28_9_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/28_9_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/28_9_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/31_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/31_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/31_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/35_sora44_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/35_sora44_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/35_sora44_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/40_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/40_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/40_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/42_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/42_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/42_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/42_sora52_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/42_sora52_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/42_sora52_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/43_sora53_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/43_sora53_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/43_sora53_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/47_sora54_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/47_sora54_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/47_sora54_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/48_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/48_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/48_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/59_vfx_03_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/59_vfx_03_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
           <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/59_vfx_03_None_  &&  .mp4`} type="video/mp4" />
-            </video>
-          </div>
-          <div className="video-masonry-item">
-            <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/motion/62_vfx_01_None_  &&  .mp4`} type="video/mp4" />
-            </video>
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/62_vfx_01_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/62_vfx_01_None_  &&  .mp4")}
+              base={base}
+            />
           </div>
         </div>
       </section>
