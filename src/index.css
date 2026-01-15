@@ -4386,6 +4386,14 @@ html {
   margin: 0;
 }
 
+/* Wrapper to clip uneven bottom edge */
+.video-masonry-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 50px;
+  margin-bottom: -50px;
+}
+
 .video-masonry-item {
   background: #111;
   border-radius: 0px;

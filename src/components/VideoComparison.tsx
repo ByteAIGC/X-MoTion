@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
 interface VideoComparisonProps {
   editedVideoSrc: string;
@@ -11,19 +11,23 @@ type OverlayState = 'small' | 'expanded' | 'hidden';
 export function VideoComparison({ editedVideoSrc, originalVideoSrc, base }: VideoComparisonProps) {
   const [overlayState, setOverlayState] = useState<OverlayState>('small');
   const [hasBeenExpanded, setHasBeenExpanded] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const originalVideoRef = useRef<HTMLVideoElement>(null);
   const editedVideoRef = useRef<HTMLVideoElement>(null);
 
   // Only show overlay if original video exists
   const showOriginal = originalVideoSrc !== undefined;
 
-  // Sync video playback
-  const syncVideos = () => {
+  // Throttled sync to avoid constant updates
+  const syncVideos = useCallback(() => {
     if (editedVideoRef.current && originalVideoRef.current) {
       const editedTime = editedVideoRef.current.currentTime;
-      originalVideoRef.current.currentTime = editedTime;
+      // Only sync if difference is significant (>0.1s) to avoid micro-adjustments
+      if (Math.abs(originalVideoRef.current.currentTime - editedTime) > 0.1) {
+        originalVideoRef.current.currentTime = editedTime;
+      }
     }
-  };
+  }, []);
 
   const handleClick = () => {
     if (!showOriginal) return;
@@ -49,15 +53,53 @@ export function VideoComparison({ editedVideoSrc, originalVideoSrc, base }: Vide
     }
   };
 
-  // Sync videos when edited video time updates
-  const handleEditedVideoTimeUpdate = () => {
-    if (originalVideoRef.current && editedVideoRef.current) {
-      originalVideoRef.current.currentTime = editedVideoRef.current.currentTime;
+  // Throttled time update handler - only sync when original is visible
+  const handleEditedVideoTimeUpdate = useCallback(() => {
+    // Only sync if original video is visible (not hidden)
+    if (overlayState !== 'hidden' && originalVideoRef.current && editedVideoRef.current) {
+      const editedTime = editedVideoRef.current.currentTime;
+      const originalTime = originalVideoRef.current.currentTime;
+      // Only sync if difference is significant (>0.1s) to reduce updates
+      if (Math.abs(originalTime - editedTime) > 0.1) {
+        originalVideoRef.current.currentTime = editedTime;
+      }
     }
-  };
+  }, [overlayState]);
+
+  // Intersection Observer for lazy loading - pause videos outside viewport
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const editedVideo = editedVideoRef.current;
+          const originalVideo = originalVideoRef.current;
+          
+          if (entry.isIntersecting) {
+            // Video is visible - ensure it's playing
+            editedVideo?.play().catch(() => {});
+            if (overlayState !== 'hidden') {
+              originalVideo?.play().catch(() => {});
+            }
+          } else {
+            // Video is not visible - pause to save resources
+            editedVideo?.pause();
+            originalVideo?.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [overlayState]);
 
   return (
     <div 
+      ref={containerRef}
       className="video-comparison-container"
       onClick={handleClick}
     >
@@ -69,6 +111,7 @@ export function VideoComparison({ editedVideoSrc, originalVideoSrc, base }: Vide
           loop 
           autoPlay 
           playsInline
+          preload="metadata"
           onTimeUpdate={handleEditedVideoTimeUpdate}
         >
           <source src={`${base}${editedVideoSrc}`} type="video/mp4" />
@@ -86,6 +129,7 @@ export function VideoComparison({ editedVideoSrc, originalVideoSrc, base }: Vide
             loop 
             autoPlay 
             playsInline
+            preload="metadata"
           >
             <source src={`${base}${originalVideoSrc}`} type="video/mp4" />
           </video>

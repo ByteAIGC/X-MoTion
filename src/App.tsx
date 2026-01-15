@@ -171,12 +171,17 @@ export default function App() {
         </div>
         <div className="video-container-large video-container-comparison">
           <video muted loop autoPlay playsInline>
+            <source src={`${base}assets_x/comparision/xmotion_basecomp4.mp4`} type="video/mp4" />
+          </video>
+        </div>
+        <div className="video-container-large video-container-comparison">
+          <video muted loop autoPlay playsInline>
             <source src={`${base}assets_x/comparision/xmotion_basecomp7.mp4`} type="video/mp4" />
           </video>
         </div>
         <div className="video-container-large video-container-comparison">
           <video muted loop autoPlay playsInline>
-            <source src={`${base}assets_x/comparision/xmotion_basecomp4.mp4`} type="video/mp4" />
+            <source src={`${base}assets_x/comparision/xmotion_basecomp18.mp4`} type="video/mp4" />
           </video>
         </div>
         <div style={{ display: 'flex', gap: '16px', width: '100%', maxWidth: '1532px', margin: '0 auto' }}>
@@ -208,7 +213,8 @@ export default function App() {
           </p>
         </div>
         
-        <div className="video-masonry">
+        <div className="video-masonry-wrapper">
+          <div className="video-masonry">
           <div className="video-masonry-item">
             <VideoComparison 
               editedVideoSrc="assets_x/motion_source/0_sora66_None_  &&  .mp4"
@@ -232,6 +238,13 @@ export default function App() {
           </div>
           <div className="video-masonry-item">
             <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/62_vfx_01_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/62_vfx_01_None_  &&  .mp4")}
+              base={base}
+            />
+          </div>
+          <div className="video-masonry-item">
+            <VideoComparison 
               editedVideoSrc="assets_x/motion_source/1_sora67_None_  &&  .mp4"
               originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/1_sora67_None_  &&  .mp4")}
               base={base}
@@ -241,6 +254,13 @@ export default function App() {
             <VideoComparison 
               editedVideoSrc="assets_x/motion_source/2_None_  &&  .mp4"
               originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/2_None_  &&  .mp4")}
+              base={base}
+            />
+          </div>
+          <div className="video-masonry-item">
+            <VideoComparison 
+              editedVideoSrc="assets_x/motion_source/4_sora59_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/4_sora59_None_  &&  .mp4")}
               base={base}
             />
           </div>
@@ -262,13 +282,6 @@ export default function App() {
             <VideoComparison 
               editedVideoSrc="assets_x/motion_source/4_12_None_  &&  .mp4"
               originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/4_12_None_  &&  .mp4")}
-              base={base}
-            />
-          </div>
-          <div className="video-masonry-item">
-            <VideoComparison 
-              editedVideoSrc="assets_x/motion_source/4_sora59_None_  &&  .mp4"
-              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/4_sora59_None_  &&  .mp4")}
               base={base}
             />
           </div>
@@ -435,24 +448,11 @@ export default function App() {
           </div>
           <div className="video-masonry-item">
             <VideoComparison 
-              editedVideoSrc="assets_x/motion_source/48_None_  &&  .mp4"
-              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/48_None_  &&  .mp4")}
-              base={base}
-            />
-          </div>
-          <div className="video-masonry-item">
-            <VideoComparison 
               editedVideoSrc="assets_x/motion_source/59_vfx_03_None_  &&  .mp4"
               originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/59_vfx_03_None_  &&  .mp4")}
               base={base}
             />
           </div>
-          <div className="video-masonry-item">
-            <VideoComparison 
-              editedVideoSrc="assets_x/motion_source/62_vfx_01_None_  &&  .mp4"
-              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/62_vfx_01_None_  &&  .mp4")}
-              base={base}
-            />
           </div>
         </div>
       </section>
