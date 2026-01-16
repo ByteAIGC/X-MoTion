@@ -91,7 +91,7 @@ export default function App() {
       <nav className="navigation-bar">
         <div className="navigation-content">
           {/* <div className="navigation-title">
-            <strong>X-MoTion:</strong> In-Context Semantic Video Transformation
+            <strong>X-MoTion:</strong> Re-Imagine Video via Re-Contextualized Semantics
           </div> */}
           <div className="navigation-buttons">
             <Button
@@ -124,8 +124,8 @@ export default function App() {
             In-Context Semantic Video Transformation
           </h2>
           <p className="teaser-description">
-          We present X-MoTion, a self-supervised framework for in-context spatio-temporal video transformation. Given a driving video, X-MoTion animates a reference image under joint guidance of text instructions and rich spatio-temporal semantics, including motion, structure, camera trajectories, and visual effects. Unlike prior methods relying on spatial alignment or domain-specific motions, our approach transfers semantic dynamics across large spatial and structural gaps.
-          Technically, we augment a pre-trained text-video MMDiT with a learnable semantic branch that injects fine-grained spatio-temporal context from VLM-encoded latents, concatenated with text tokens and video noise. X-MoTion learns transferable conditioning via self-supervision on unpaired in-the-wild videos, avoiding large paired datasets. A progressive training strategy with spatial and textural augmentations disentangles semantic motion from appearance, and can be further refined with minimal paired data. Experiments show strong generalization and high fidelity for motion transfer, multi-shot remixing, and text-guided spatio-temporal editing.
+          We present X-MoTion, a self-supervised framework for in-context spatio-temporal video reimagination via re-contextualized semantics. Given an arbitrary driving video, X-MoTion animates a distinct reference image under the joint guidance of global textual instructions and a comprehensive spectrum of spatio-temporal visual semantics, including motion, structure, camera trajectories, visual effects, and shot transitions. In contrast to prior video editing and human motion transfer methods that rely on rigid spatial alignment or domain-specific motion priors, our approach faithfully transfers the semantic essence of unconstrained driving videos to novel reference images, even amidst substantial spatial misalignment and pronounced structural or textural discrepancies.
+            Technically, we augment a pre-trained text-video Multi-Modal Diffusion Transformer (MMDiT) with a learnable auxiliary branch that injects fine-grained spatio-temporal context from a driving video. This semantic branch operates in parallel to the dual text and video streams; it processes VLM-encoded latents and concatenates them with global text tokens and video noise latents along the sequence axis. Unlike prior approaches dependent on large-scale, synthetic cross-paired datasets, X-MoTion acquires transferable semantic conditioning via self-supervision on unpaired, in-the-wild videos. Our calibrated progressive training strategy for in-context conditioning, combined with spatial and textural augmentations, effectively disentangles semantic motion from pixel-level details, which can be further enhanced with a minimal number of paired examples. Extensive experiments demonstrate that X-MoTion enables generalized, high-fidelity video transformations, supporting diverse applications such as generic motion transfer, multi-shot video remixing, and text-instructed spatio-temporal editing.
           </p>
         </div>
       </section>
