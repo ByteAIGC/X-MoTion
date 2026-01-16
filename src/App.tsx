@@ -169,6 +169,7 @@ export default function App() {
             <source src={`${base}assets_x/comparision/xmotion_basecomp1.mp4`} type="video/mp4" />
           </video>
         </div>
+
         <div className="video-container-large video-container-comparison">
           <video muted loop autoPlay playsInline>
             <source src={`${base}assets_x/comparision/xmotion_basecomp4.mp4`} type="video/mp4" />
@@ -187,7 +188,7 @@ export default function App() {
         <div style={{ display: 'flex', gap: '16px', width: '100%', maxWidth: '1532px', margin: '0 auto' }}>
           <div className="video-container-large video-container-comparison" style={{ flex: '1', maxWidth: 'none', margin: '0' }}>
             <video muted loop autoPlay playsInline>
-              <source src={`${base}assets_x/comparision/xmotion_basecomp3.mp4`} type="video/mp4" />
+              <source src={`${base}assets_x/comparision/xmotion_basecomp2.mp4`} type="video/mp4" />
             </video>
           </div>
           <div className="video-container-large video-container-comparison" style={{ flex: '1', maxWidth: 'none', margin: '0' }}>
@@ -257,6 +258,24 @@ export default function App() {
               base={base}
             />
           </div>
+
+          <div className="video-masonry-item">
+            <VideoComparison
+              editedVideoSrc="assets_x/motion_source/0_牵引视频10_None_中景镜头，拍摄一个人 (5).mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/0_牵引视频10_None_中景镜头，拍摄一个人 (5).mp4")}
+              base={base}
+            />
+          </div>
+
+
+          <div className="video-masonry-item">
+            <VideoComparison
+              editedVideoSrc="assets_x/motion_source/1_sora46_None_  &&  .mp4"
+              originalVideoSrc={getOriginalVideoPath("assets_x/motion_source/1_sora46_None_  &&  .mp4")}
+              base={base}
+            />
+          </div>
+
           <div className="video-masonry-item">
             <VideoComparison 
               editedVideoSrc="assets_x/motion_source/4_sora59_None_  &&  .mp4"
