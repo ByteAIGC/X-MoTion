@@ -20,7 +20,7 @@ if [ ! -d .git ]; then
 fi
 
 # Store original remote URL to restore later
-ORIGINAL_REMOTE=""
+ORIGINAL_REMOTE="git@code.byted.org:tianpei.gu/xmotion-page.git"
 if git remote get-url origin >/dev/null 2>&1; then
   ORIGINAL_REMOTE="$(git remote get-url origin)"
   cur="$ORIGINAL_REMOTE"
