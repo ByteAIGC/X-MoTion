@@ -96,10 +96,10 @@ export default function App() {
           <div className="navigation-buttons">
             <Button
               className="bg-transparent text-white hover:bg-white hover:text-black transition-colors px-4 py-2 h-auto border border-white/20"
-              onClick={() => window.open('https://arxiv.org/pdf/2509.15496', '_blank')}
+              onClick={() => window.open('', '_blank')}
             >
               <FileText className="w-4 h-4 mr-2 text-white" />
-              Technical Report
+              Technical Report (Coming Soon)
             </Button>
 
           </div>
@@ -157,7 +157,7 @@ export default function App() {
 
 
       {/* Video Teaser Section */}
-      <section className="section-fullwidth" style={{ marginBottom: '150px', marginTop: '80px' }}>
+      <section className="section-fullwidth" style={{ marginBottom: '40px', marginTop: '80px' }}>
 
          <p className="section-description text-left">
           Visual comparison demonstrates X-MoTion's superior performance.
@@ -477,7 +477,7 @@ export default function App() {
       </section>
 
       {/* Text Edit Examples - Masonry Grid */}
-      <section className="section-fullwidth mb-[100px]">
+      <section className="section-fullwidth mb-[100px]" style={{ marginTop: '80px' }}>
         <div className="px-4 md:px-[10%]">
           <h3 className="text-xl font-semibold py-5 mb-5 text-left">
             Text-Instructed Spatio-Temporal Editing
