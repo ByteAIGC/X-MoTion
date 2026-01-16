@@ -486,9 +486,9 @@ export default function App() {
             </div>
             <div className="video-masonry-item prompt-wrap" style={{ flex: '1 1 0', minWidth: 0 }}>
               <video muted loop autoPlay playsInline style={{ width: '100%', height: 'auto' }}>
-                <source src={`${base}assets_x/text_edit/2_sora63_2_None_ &&.mp4`} type="video/mp4" />
+                <source src={`${base}assets_x/text_edit/48_None_  &&  .mp4`} type="video/mp4" />
               </video>
-              <div className="prompt">An ice cream machine extrudes a pink teddy bear</div>
+              <div className="prompt">The man in the background is singing and dancing along to the music.</div>
             </div>
             <div className="video-masonry-item prompt-wrap" style={{ flex: '1 1 0', minWidth: 0 }}>
               <video muted loop autoPlay playsInline style={{ width: '100%', height: 'auto' }}>
