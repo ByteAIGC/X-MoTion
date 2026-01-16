@@ -4640,7 +4640,7 @@ html {
 
 .video-container-teaser {
   width: 100% !important;
-  max-width: 1532px !important;
+  max-width: 100% !important;
   margin: 0 auto !important;
   background: #111;
   border-radius: 0px;
