@@ -146,7 +146,7 @@ export default function App() {
         </h3>
         <p className="section-description text-left">
           GSB comparison demonstrates X-MoTion's superior performance across multiple evaluation metrics,
-          achieving state-of-the-art results in semantic motion following, identity consistency, and video quality.
+          achieving state-of-the-art results in semantics following, editing consistency, and perceptual fidelitys.
         </p>
 
         {/* GSB Comparison Chart */}

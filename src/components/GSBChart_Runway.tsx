@@ -9,9 +9,9 @@ interface GSBData {
 }
 
 const data: GSBData[] = [
-  { metric: 'Motion Following', good: 42, same: 10, bad: 6 },
-  { metric: 'Identity Consistency', good: 18, same: 36, bad: 4 },
-  { metric: 'Visual Quality', good: 26, same: 26, bad: 6 },
+  { metric: 'Semantics Following', good: 42, same: 10, bad: 6 },
+  { metric: 'Editing Consistency', good: 18, same: 36, bad: 4 },
+  { metric: 'Perceptual Fidelity', good: 26, same: 26, bad: 6 },
 ];
 
 const COLORS = {
